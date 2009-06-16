@@ -90,7 +90,7 @@ shifty.config.tags = {
     ["1:init"] =     { layout = awful.layout.suit.max,          mwfact=0.60, exclusive = false, solitary = false, position = 1, init = true, screen = 1, slave = true } ,
     ["2:web"] =    { layout = awful.layout.suit.tile.bottom,  mwfact=0.65, exclusive = false , solitary = true , position = 2, spawn = browser  } ,
     ["3:term"] = {layout = awful.layout.suit.tile, position = 3 }, 
-    ["4:chat"] = {layout = awful.layout.suit.tile.left, position = 4, mwfact=0.2, spawn = "pidgin"},
+    ["4:chat"] = {layout = awful.layout.suit.tile.left, position = 4, ncol = 2, mwfact=0.2, spawn = "pidgin"},
     ["7:mail"] =   { layout = awful.layout.suit.tile,         mwfact=0.55, exclusive = false, solitary = false, position = 7, spawn = mail, slave = true     } ,
     ["8:media"] =  { layout = awful.layout.suit.float,                     exclusive = false, solitary = false, position = 8 } ,
     ["9:office"] = { layout = awful.layout.suit.tile, position = 9} ,
