@@ -15,6 +15,8 @@ require("calendar")
 
 require("markup")
 
+require("groupulous")
+
 -- useful for debugging, marks the beginning of rc.lua exec
 print("Entered rc.lua: " .. os.time())
 
@@ -323,6 +325,8 @@ globalkeys =
     key({ modkey,           }, "x", function () awful.util.spawn("thunar") end),
     key({ "Mod1",           }, "F2", function () awful.util.spawn("gmrun") end),
 
+    -- Groupsome
+    key({ modkey,           }, "g", function () groupulous.group() end),
 
     -- Prompt
     key({ modkey }, "F1",
@@ -411,6 +415,8 @@ awful.hooks.focus.register(function (c)
     if not awful.client.ismarked(c) then
         c.border_color = beautiful.border_focus
     end
+
+    groupulous.focus(c)
 end)
 
 -- Hook function to execute when unfocusing a client.
@@ -453,6 +459,10 @@ awful.hooks.manage.register(function (c, startup)
 
 end)
 
+awful.hooks.unmanage.register(function (c)
+  groupulous.unmanage(c)
+end)
+
 -- Hook function to execute when arranging the screen.
 -- (tag switch, new client, etc)
 awful.hooks.arrange.register(function (screen)
@@ -475,8 +485,12 @@ end)
 
 -- {{{ Autostart
 
+os.execute("xmodmap ~/.xmodmap &")
+os.execute("xbindkeys &")
+os.execute("volwheel &")
+os.execute("wicd-client &")
+os.execute("syndaemon -t -i 2 &")
 os.execute("unclutter &")
-os.execute("/home/kremso/wallpapers/rotator.sh -s &")
 
 --}}}
 
